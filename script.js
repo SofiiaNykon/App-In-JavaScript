@@ -3,7 +3,7 @@ const userFetch = async () =>{
   const response  = await fetch('https://fakestoreapi.com/products?limit=15');
    const productFetch =  await response.json();
     return productFetch;
-}                 //creating element
+}               
               async function createContainer(){
                 const products = await userFetch();
                 const list = document.querySelector(".products-container");
@@ -38,23 +38,28 @@ const userFetch = async () =>{
 }
 createContainer()
 
-// function button.onclick(e) {
-// const cart = document.querySelector(".cart");
-// const cartEmptyTitle = document.querySelector(".cart-list-titles");
-// const cartListWrapper = document.querySelector(".cart-list-wrapper");
-// const cartListTitles = document.querySelector(".cart-list-titles");
-// const cartListItemTitle = document.querySelector(".cart-list-item-title");
-// const  cartListQuantityTitle = document.querySelector(".cart-list-quantity-title");
-// const cartList = document.querySelector(".cart-list");
-// const totalAmount = document.querySelector(".total-amount");
+button.addEventListener(`click`, () => {
+const cart = document.querySelector(".cart");
+const cartListWrapper = document.querySelector(".cart-list-wrapper");
+const cartListTitles = document.querySelector(".cart-list-titles");
+const cartListItemTitle = document.querySelector(".cart-list-item-title");
+const  cartListQuantityTitle = document.querySelector(".cart-list-quantity-title");
+const cartList = document.querySelector(".cart-list");
+const totalAmount = document.querySelector(".total-amount");
+
+const cartImg = document.createElement("img");
+cartImg.classList.add("cart-list-img-section-img")
+const inputPrice = document.createElement("input");
+inputPrice.classList.add("input")
+const buttonResult = document.createElement("button");
+const totalAmountSpan = document.createElement("span");
+totalAmountSpan.classList.add("total-amount-span")
+buttonResult.classList.add("cart-list-quantity-section-button")
+// inputPrice.innerHTML = counter;
 
 
-// const inputPrice = document.createElement("input");
-// const buttonResult = document.createElement("button");
-// buttonResult.classList.add("buttonResult")
-// // inputPrice.innerHTML = counter;
 
 
-// cart.append(cartEmptyTitle, cartListWrapper, cartListTitles, cartListItemTitle, cartListQuantityTitle, cartList, totalAmount)
-// }
+cart.append(cartEmptyTitle, cartListWrapper, cartListTitles, cartListItemTitle, cartListQuantityTitle, cartList, totalAmount)
+})
 

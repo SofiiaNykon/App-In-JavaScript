@@ -125,7 +125,7 @@
     justify-content: space-between;
   }
   
-  .cart-list-quantity-section > button {
+  .cart-list-quantity-section-button {
     padding: 10px;
     border: none;
     background-color: red;
@@ -135,13 +135,13 @@
     transition: 0.3s;
   }
   
-  .cart-list-img-section > img {
+  .cart-list-img-section-img {
     height: 100px;
     width: 100px;
     object-fit: contain;
   }
   
-  .cart-list-img-section > h4 {
+  .cart-list-item-title {
     margin-left: 10px;
     font-weight: normal;
   }
@@ -164,7 +164,7 @@
     font-weight: normal;
   }
   
-  .total-amount > span {
+  .total-amount-span {
     margin-left: 10px;
     font-weight: bold;
   }
