@@ -49,6 +49,7 @@
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
+    width: 100%;
   }
   
   .product-item-price-span {
@@ -65,7 +66,7 @@
     transition: 0.3s;
   }
   
-  .product-price-button > button:hover {
+  .product-price-button:hover {
     background-color: #0dc00d;
   }
   
@@ -148,14 +149,13 @@
   .cart-list-price-section {
     font-weight: bold;
   }
-  
-  .cart-list-quantity-section > input {
+.input {
     width: 50px;
     padding: 5px 0;
     text-indent: 5px;
   }
   
-  .cart-list-quantity-section > button:hover {
+  .buttonResult:hover {
     background-color: #bd0404;
   }
   
