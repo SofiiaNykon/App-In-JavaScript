@@ -26,7 +26,6 @@ const userFetch = async () =>{
                 button.classList.add("product-price-button");
             
                 img.src = product.image;
-                console.log(img)
                 productTitle.innerHTML = product.title;
                 productDescribe.innerHTML = product.description;
                 price.innerHTML = product.price;
@@ -40,13 +39,27 @@ const userFetch = async () =>{
 
 
 const addToCart = (product) => (`click`, () => {
-const cartListItems = document.getElementsByClassName("cart-list-item");
-for(const item of cartListItems){
+const cartItems = document.getElementsByClassName("cart-list-item");
+for(const item of cartItems){
   if(product.id === +item.getAttribute("id")){
     const quantityInput = item.querySelector(".cart-list-quantity-section > input");
     quantityInput.value++;
-    updateCarTotal();
+    updateCartTotal();
     return;
+  }
+}
+
+
+
+const removeProductFromCart = (event) =>{
+  event.target.parentElement.parentElement.remove();
+  const cartListItems = document.getElementsByClassName("cart-list-item");
+  updateCartTotal();
+  if (!cartListItems.length) {
+    const cartListWrapper = document.querySelector(".cart-list-wrapper");
+    const emptyCartTitle = document.querySelector(".cart-empty-title");
+    cartListWrapper.style.display = "none";
+    emptyCartTitle.style.display = "block";
   }
 }
 
@@ -64,9 +77,7 @@ const price = document.createElement("span");
 const quantity = document.createElement("input");
 const removeBtn = document.createElement("button");
 quantity.addEventListener("change", updateCartTotal);
-removeBtn.addEventListener("click", (event) =>
-  removeProductFromCart(event, product)
-);
+removeBtn.addEventListener("click",removeProductFromCart);
 cartListItem.classList.add("cart-list-item");
 cartListImgSection.classList.add(
   "cart-list-item-section",
@@ -103,7 +114,20 @@ cartListItem.append(
 cart.appendChild(cartListItem);
 updateCartTotal();
 });
-createContainer()
+const updateCartTotal = () => {
+  const totalAmount = document.querySelector(".total-amount-span");
+  const cartItems = document.getElementsByClassName("cart-list-item");
+  let total = 0;
+  for (const item of cartItems) {
+    const price = item.querySelector(".cart-list-price-section-span");
+    const quantity = item.querySelector(".cart-list-quantity-section-input");
+    const currentAmount = parseFloat(price.innerText) * quantity.value;
+    total += currentAmount;
+  }
+  totalAmount.innerText = `${total}$`;
+};
+
+createContainer();
 
 
 // const cart = document.querySelector(".cart");
