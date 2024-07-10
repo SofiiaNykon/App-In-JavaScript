@@ -150,7 +150,7 @@
   .cart-list-price-section {
     font-weight: bold;
   }
-.input {
+  .cart-list-quantity-section-input{
     width: 50px;
     padding: 5px 0;
     text-indent: 5px;

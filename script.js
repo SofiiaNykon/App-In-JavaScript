@@ -1,11 +1,11 @@
 
-const userFetch = async () =>{
+const fetch = async () =>{
   const response  = await fetch('https://fakestoreapi.com/products?limit=15');
    const productFetch =  await response.json();
     return productFetch;
 }               
               async function createContainer(){
-                const products = await userFetch();
+                const products = await fetch();
                 const list = document.querySelector(".products-container");
                 for(const product of products){
                 const productItem = document.createElement("div");
@@ -38,19 +38,6 @@ const userFetch = async () =>{
 }
 
 
-const addToCart = (product) => (`click`, () => {
-const cartItems = document.getElementsByClassName("cart-list-item");
-for(const item of cartItems){
-  if(product.id === +item.getAttribute("id")){
-    const quantityInput = item.querySelector(".cart-list-quantity-section > input");
-    quantityInput.value++;
-    updateCartTotal();
-    return;
-  }
-}
-
-
-
 const removeProductFromCart = (event) =>{
   event.target.parentElement.parentElement.remove();
   const cartListItems = document.getElementsByClassName("cart-list-item");
@@ -62,6 +49,18 @@ const removeProductFromCart = (event) =>{
     emptyCartTitle.style.display = "block";
   }
 }
+
+const addToCart = (product) => (`click`, () => {
+const cartItems = document.getElementsByClassName("cart-list-item");
+for(const item of cartItems){
+  if(product.id === +item.getAttribute("id")){
+    const quantityInput = item.querySelector(".cart-list-quantity-section-input");
+    quantityInput.value++;
+    updateCartTotal();
+    return;
+  }
+}
+
 
 const cart = document.querySelector(".cart-list");
 const emptyCartTitle = document.querySelector(".cart-empty-title");
@@ -128,26 +127,4 @@ const updateCartTotal = () => {
 };
 
 createContainer();
-
-
-// const cart = document.querySelector(".cart");
-// const cartListWrapper = document.querySelector(".cart-list-wrapper");
-// const cartListTitles = document.querySelector(".cart-list-titles");
-// const cartListItemTitle = document.querySelector(".cart-list-item-title");
-// const  cartListQuantityTitle = document.querySelector(".cart-list-quantity-title");
-// const cartList = document.querySelector(".cart-list");
-// const totalAmount = document.querySelector(".total-amount");
-
-// const cartImg = document.createElement("img");
-// cartImg.classList.add("cart-list-img-section-img")
-// const inputPrice = document.createElement("input");
-// inputPrice.classList.add("input")
-// const buttonResult = document.createElement("button");
-// const totalAmountSpan = document.createElement("span");
-// totalAmountSpan.classList.add("total-amount-span")
-// buttonResult.classList.add("cart-list-quantity-section-button")
-// inputPrice.innerHTML = counter;
-
-// cart.append(cartEmptyTitle, cartListWrapper, cartListTitles, cartListItemTitle, cartListQuantityTitle, cartList, totalAmount)
-// })
 
